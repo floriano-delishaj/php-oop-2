@@ -2,28 +2,15 @@
 
 class Product {
     protected float $prezzo;
-    protected int $qty;
     protected string $desc;
     protected string $marca;
 
-    function  __construct(array $_infoProduct) {
-        $requiredKeys = [
-            "prezzo",
-            "qty",
-            "desc",
-            "marca"
-        ];
+    function  __construct(float $prezzo, string $desc, string $marca) {
 
-        foreach ($requiredKeys as $key) {
-            if (!key_exists($key, $_infoProduct)) {
-                var_dump("Chiave -  $key - mancante");
-            }
-        }
+        $this->setPrezzo($prezzo);
+        $this->setDesc($desc);
+        $this->setMarca($marca);
 
-        $this->setPrezzo($_infoProduct["prezzo"]);
-        $this->setQty($_infoProduct["qty"]);
-        $this->setDesc($_infoProduct["desc"]);
-        $this->setMarca($_infoProduct["marca"]);
     }
 
     public function getPrezzo(): float
@@ -34,17 +21,6 @@ class Product {
     public function setPrezzo($prezzo): Product
     {
         $this->prezzo = $prezzo;
-        return $this;
-    }
-
-    public function getQty(): int
-    {
-        return $this->qty;
-    }
-
-    public function setQty($qty): Product
-    {
-        $this->qty = $qty;
         return $this;
     }
 

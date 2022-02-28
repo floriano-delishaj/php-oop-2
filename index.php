@@ -1,6 +1,5 @@
 <?php
-    include_once "classes/food.php";
-    include_once "classes/product.php";
+include_once "instances/data.php"
 ?>
 
 <html>
@@ -10,7 +9,6 @@
     </head>
     <body>
     <div class="container">
-        <h1>Ciao</h1>
     </div>
     </body>
 </html>

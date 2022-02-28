@@ -1,30 +1,26 @@
 <?php
 
-require_once "product.php";
+include_once "product.php";
 
-class Food extends Product {
+class Food extends Product
+{
     private string $scadenza;
     private int $peso;
 
-    function __construct(array $_infoProduct)
+    function __construct(float $prezzo, string $desc, string $marca, string $scadenza, int $peso)
     {
-        $requiredKeys = [
-            "scadenza",
-            "peso",
-        ];
 
-        foreach ($requiredKeys as $key) {
-            if (!key_exists($key, $_infoProduct)) {
-                var_dump("Chiave -  $key - mancante");
-            }
-        }
-        parent::__construct($_infoProduct);
+        parent::__construct($prezzo, $desc,$marca);
 
-        $this->setScadenza($_infoProduct["scadenza"]);
-        $this->setPeso($_infoProduct["peso"]);
+        $this->setScadenza($scadenza);
+        $this->setPeso($peso);
 
     }
 
+    public function getScadenza(): string
+    {
+        return $this->scadenza;
+    }
 
     public function setScadenza($scadenza): Food
     {
@@ -43,13 +39,3 @@ class Food extends Product {
         return $this;
     }
 }
-
-$test = new Food([
-    "scadenza" => "2022-06-06",
-    "peso" => 10,
-    "prezzo" => 10,
-    "qty" => 20,
-    "desc" => "descrizione",
-    "marca" => "kinder"
-]);
-var_dump($test);
